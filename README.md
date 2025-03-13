@@ -56,11 +56,11 @@ Whisper is an automatic speech recognition (ASR) system from OpenAI. Different m
 - **large** → Best accuracy, slowest performance.
 
 #### **Default LLM Model for Summarization**
-- **L3.2-Rogue-Creative-Instruct-7B-GGUF** (Recommended for Mac M1 16GB)
+- **L3.2-Rogue-Creative-Instruct-7B-GGUF** (Recommended for Mac M1 16GB)  
 Fine-tuned version of LLama3.2 3B at Quant 4, expanded to 67 layers using the Brainstorm 40x method. It outperforms the standard Llama 3.2 7B in conversational coherence and instruction adherence. This model is optimized for creative writing and structured text summarization.
     - max context window of 131,072
     - min input length of 1 token
-    - different Quant choices available
+    - different Quant choices available  
 **default model used when no specific LLM is provided**.
 
 
