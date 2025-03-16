@@ -40,7 +40,6 @@ python3 audio_summarizer.py my_audio.mp3
 
 ### **Available Options & Flags**
 ⚠️ **Note:** Model selection via `--llama-model` is not fully implemented yet. The script currently defaults to the recommended instruct model.  
-⚠️ **Note:** Temperature & repeat_penality adjustment using `--temperature` and `--repeat-penalty` is not fully implemented yet. Use the variables TEMPERATURE and RETITION_PENALTY at the top of the script.
 | Argument | Description |
 |----------|-------------|
 | `my_audio.mp3` | Path to the input audio file |
@@ -114,8 +113,7 @@ This project is open-source under the **MIT License**.
 ---
 
 ## 📋 TODO
-- 📌 Gather working repos for various open-source LLMs.
-- 📌 Implement temperature and rep value selection vie flags `--temperature` & `--repeat-penalty`
+- 📌 Gather working repos for various open-source LLMs.  
 - 📌 Fix model selection to work properly via `--llama-model` flag.
 - 📌 Conduct intensive testing on stronger Apple Silicon chips and NVIDIA GPUs.
 
