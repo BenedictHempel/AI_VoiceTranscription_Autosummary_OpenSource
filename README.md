@@ -48,7 +48,7 @@ python3 audio_summarizer.py my_audio.mp3
 |----------|-------------|
 | `my_audio.mp3` | Path to the input audio file |
 | `--whisper-model` | Select Whisper model (tiny, base, small, medium, large) |
-| `--llama-model` | Choose LLM (Llama_3.2_7BINS, Llama_3.2_7B, Llama_3.2_11B, Llama_3.2_13B, Mistral_7B, Mixtral_8x7B, Starling_7B) |
+| `--llama-model` | Choose LLM (Mistral-7B, Llama-3.2-3B-Instruct, Llama-3.2-1B-Instruct, Llama-2-7B, Starling-7B, Mixtral-8x7B, NexoNimbus-7B, Falcon-Mamba-7B, Beyonder-4x7B, laser-dolphin-mixtral-2x7B, Dr_Samantha-7B, Baichuan-2-13B) |
 | `--output` | Path to save transcription & summary |
 | `--temperature` |Controls randomness (0.0-1.0) |  
 | `--repeat-penalty` |Controls how much to penalize repetition 1.0 - 1.4|
