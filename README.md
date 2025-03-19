@@ -5,10 +5,14 @@ Autoloading of all whisper model sizes & autoloading of LLMs from HuggingFace re
 Adaptability: LLM tuneable by model, modelsize & quantization as well as by context window, temperature & repeatition penality to fit all resources and needs.
 
 ## Features
-- 🎙 **Transcribe** spoken content from an audio file by running whisper locally.
-- ✍️ **Summarize** the transcribed text using a local LLM.
-- 🚀 **Supports multiple models** (Llama 3.x, Mistral, Starling etc.).
-- ⚡ **This script is optimized for Apple Silicon running by leveraging metal acceleration.**
+- **Transcription:** Runs Whisper **locally** without sending data to the cloud.
+- **Summarization:** Uses **local Large Language Models (LLMs)** from Hugging Face.
+- **Multiple LLM types included:**
+  - **Instruction-Tuned Models** (e.g., Mistral, Starling) for structured summarization.
+  - **Standard General-Purpose LLMs** (e.g., Llama 3.2) for NLP tasks.
+  - **Mixture-of-Experts (MoE) Models** (e.g., Mixtral, Beyonder) for efficient processing.
+- **Optimized for Apple Silicon** with **Metal acceleration**.
+- **GPU Support:** Works with **NVIDIA CUDA**, **Apple Metal**, and **CPU-only setups**.
 ---
 
 ## 🛠️ Installation
@@ -39,7 +43,7 @@ python3 audio_summarizer.py my_audio.mp3
 ```
 
 ### **Available Options & Flags**
-⚠️ **Note:** Model selection via `--llama-model` is not fully implemented yet. The script currently defaults to the recommended instruct model.  
+
 | Argument | Description |
 |----------|-------------|
 | `my_audio.mp3` | Path to the input audio file |
@@ -48,6 +52,7 @@ python3 audio_summarizer.py my_audio.mp3
 | `--output` | Path to save transcription & summary |
 | `--temperature` |Controls randomness (0.0-1.0) |  
 | `--repeat-penalty` |Controls how much to penalize repetition 1.0 - 1.4|
+| `--context-size` |Defines the context window size (see below)|
 
 ### **Detailed Model Descriptions**
 #### **Whisper Models**
@@ -58,27 +63,56 @@ Whisper is an automatic speech recognition (ASR) system from OpenAI. Different m
 - **medium** → High accuracy, but slower.
 - **large** → Best accuracy, slowest performance.
 
-#### **Default LLM Model for Summarization**
-- **L3.2-Rogue-Creative-Instruct-7B-GGUF** (Recommended for Mac M1 16GB)  
-Fine-tuned version of LLama3.2 3B at Quant 4, expanded to 67 layers using the Brainstorm 40x method. It outperforms the standard Llama 3.2 7B in conversational coherence and instruction adherence.
-This model is optimized for creative writing and structured text summarization** → used when no specific LLM repo is provided**.  
-    - max context window of 131,072
-    - min input length of 1 token
-    - different Quant choices available  
+  
+## 🧠 Default LLM Model for Summarization
+
+### **Mistral-7B**  
+
+- **Developer:** Mistral AI  
+- **Open-Source Status:** ✅ Fully Open-Source  
+- **Ancestry:** Based on **LLaMA 2**, optimized for **efficiency & summarization**.  
+
+#### **Key Features:**
+- 🔹 **Strong summarization & instruction following.**
+- 🔹 **Optimized for Mac Metal acceleration.**
+- 🔹 **Uses Q4_K_M quantization for best performance.**
+- 🔹 **Efficient even on lower-end hardware.**
+- 🔹 **Extensible context window support (8192+ tokens).**
+
+📌 **This model gave the most consistent results within a reasonable performance/resource ratio during testing on Mac M1 16GB with metal acceleration.**
+
 
 ---
 
-## 🧠 Alternative LLM Models
-This script will support **different LLMs** for summarization in the future:
-- **Llama 3.2 7B (Standard Version)** → The base Llama 3.2 7B model, optimized for general-purpose NLP tasks but less tuned for structured summarization.
-- **Llama 3.2 13B** → More detailed summaries with improved comprehension but requires more memory.
-- **Llama 3.2 11B** → Enhanced performance with longer context support.
-- **Mixtral 8x7B** → A Mixture-of-Experts model, ideal for high-quality, in-depth summarization, **but currently not available.**
-- **Mistral 7B** → Lightweight and efficient.
-- **Llama 2 7B** → Older but still usable as a fallback option.
-- **Starling 7B** → An alternative with optimized prompt-following capabilities.
+## **🧠 Alternative LLM Models**
+| Model | Developer | Open-Source? | Type | Description |
+|-------|-----------|--------------|------|-------------|
+| **Mistral-7B (Default)** | Mistral AI | ✅ Open | Instruction-Tuned | Optimized for summarization, best performance on macOS Metal |
+| **Llama-3.2-3B-Instruct** | Meta AI | ❌ Closed | Standard | General-purpose NLP & summarization |
+| **Llama-3.2-1B-Instruct** | Meta AI | ❌ Closed | Standard | Lighter version for low-memory setups |
+| **Llama-2-7B** | Meta AI | ✅ Open | Standard | Older but still effective |
+| **Starling-7B** | Berkeley AI | ✅ Open | Instruction-Tuned | Highly optimized for structured summarization |
+| **Mixtral-8x7B** | Mistral AI | ✅ Open | MoE | Mixture-of-Experts model, very efficient |
+| **NexoNimbus-7B** | Cohere | ✅ Open | Standard | Balanced for summarization & generation |
+| **Falcon-Mamba-7B** | TII UAE | ✅ Open | Experimental | High-efficiency model with novel techniques |
+| **Beyonder-4x7B** | Stability AI | ✅ Open | MoE | Multi-expert model for complex tasks |
+| **laser-dolphin-mixtral-2x7B** | Unknown | ✅ Open | MoE | Hybrid Mixtral variant for efficiency |
+| **Dr_Samantha-7B** | Stability AI | ✅ Open | Instruction-Tuned | Optimized for conversational AI & medical text |
+| **Baichuan-2-13B** | Baichuan AI | ✅ Open | Standard | Chinese & multilingual NLP model |
+
 
 ---
+
+🛠 Context Window Flag (--context-size)
+
+The context window determines how many tokens the model can process at once.
+| Argument | Description |
+|----------|-------------|
+|"x"|	Base context size (Default: 8192)|
+|"x*2"|	Double the base context (Recommended for large summaries)|
+|"x*4", "x*8"|	Further increases (requires more VRAM)|
+|"x/2", "x/4", "x/8"|	Reduces the context window (for low-memory setups)|
+|Specific Number|	e.g., "32768" to manually define the size|
 
 ## 💻 Running on NVIDIA (CUDA) Instead of Metal
 To run on **NVIDIA GPUs**, install **CUDA dependencies**:
@@ -104,6 +138,8 @@ python audio_summarizer.py my_audio.mp3
 - **Issue: Whisper not found** → Run `pip install openai-whisper`
 - **Issue: Out of memory** → Reduce `n_ctx` in `audio_summarizer.py`
 - **Issue: CUDA errors** → Check `nvidia-smi` to confirm GPU availability
+- **Return -3 Error (Ollama/Llama.cpp)** → Reduce `--context-size`, check if **VRAM/CPU RAM is overloaded** 
+- **Exceeding Context Size (LLM Fails Midway)** → Lower `--context-size` to prevent **exceeding model’s token limit** 
 
 ---
 
@@ -113,12 +149,14 @@ This project is open-source under the **MIT License**.
 ---
 
 ## 📋 TODO
-- 📌 Gather working repos for various open-source LLMs.
-    - update list of models
-- 📌 Fix model selection to work properly via `--llama-model` flag.
-- 📌 Conduct intensive testing on stronger Apple Silicon chips and NVIDIA GPUs.
-- 📌 Add description for context window flag
-- 📌 Add description for temperature flag & repeat penalty flag
+- 📌 add phi4, gemma3, deepseek-r1, qwen
+- 📌 integrate visual capabilities with llava
+- 📌 Add resource intensive models
+- 📌 Conduct intensive testing on stronger Apple Silicon chips and NVIDIA GPUs
+- 📌 Add `--quantization` flag to manually select quantization levels (Q4, Q6, Q8)
+    - Auto-download best quantized model for user’s hardware
+- 📌 Implement adaptive temperature & penalty settings based on input length
+- 📌 Enable GPU load balancing between multiple available GPUs
 
 
 🚀 **Happy Transcribing!**
