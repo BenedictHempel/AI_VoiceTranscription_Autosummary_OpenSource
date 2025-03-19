@@ -113,9 +113,12 @@ This project is open-source under the **MIT License**.
 ---
 
 ## 📋 TODO
-- 📌 Gather working repos for various open-source LLMs.  
+- 📌 Gather working repos for various open-source LLMs.
+    - update list of models
 - 📌 Fix model selection to work properly via `--llama-model` flag.
 - 📌 Conduct intensive testing on stronger Apple Silicon chips and NVIDIA GPUs.
+- 📌 Add description for context window flag
+- 📌 Add description for temperature flag & repeat penalty flag
 
 
 🚀 **Happy Transcribing!**
