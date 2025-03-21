@@ -157,6 +157,12 @@ This project is open-source under the **MIT License**.
     - Auto-download best quantized model for user’s hardware
 - 📌 Implement adaptive temperature & penalty settings based on input length
 - 📌 Enable GPU load balancing between multiple available GPUs
+- 📌 add use existing transcription file from transient/from provided file
+- 📌 add option to only create transcript
+    - add option to provide target path for transcript & and for summary
+- 📌 add option to start chat mode with context
+- 📌 add prompt modification by providing string via flag
+- 📌 add permanent personalization options
 
 
 🚀 **Happy Transcribing!**
