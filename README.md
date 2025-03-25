@@ -13,10 +13,6 @@ Adaptability: LLM tuneable by model, modelsize & quantization as well as by cont
   - **Mixture-of-Experts (MoE) Models** (e.g., Mixtral, Beyonder) for efficient processing.
 - **Optimized for Apple Silicon** with **Metal acceleration**.
 - **GPU Support:** Works with **NVIDIA CUDA**, **Apple Metal**, and **CPU-only setups**.
-- add "/--free_chat"
-- add "/--focus_transcript"
-- add "/--free_chat_only"
-- implement modification of system prompts during conversation
 ---
 
 ## 🛠️ Installation
@@ -153,7 +149,7 @@ This project is open-source under the **MIT License**.
 ---
 
 ## 📋 TODO
-- 📌 add phi4, gemma3, deepseek-r1, qwen
+- 📌 add phi4, gemma3, deepseek-r1, qwen and codellama
 - 📌 integrate visual capabilities with llava
 - 📌 Add resource intensive models
 - 📌 Conduct intensive testing on stronger Apple Silicon chips and NVIDIA GPUs
@@ -165,8 +161,12 @@ This project is open-source under the **MIT License**.
 - 📌 add option to only create transcript
     - add option to provide target path for transcript & and for summary
 - 📌 add option to start chat mode with context
-- 📌 add prompt modification by providing string via flag
+- 📌 add base prompt modification by providing string via flag
 - 📌 add permanent personalization options
+- 📌 add `/--free_chat`
+- 📌 add `/--focus_transcript`
+- 📌 add `/--free_chat_only`
+- 📌 implement modification of system prompts during conversation
 
 
 🚀 **Happy Transcribing!**
