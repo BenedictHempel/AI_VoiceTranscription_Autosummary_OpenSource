@@ -13,6 +13,10 @@ Adaptability: LLM tuneable by model, modelsize & quantization as well as by cont
   - **Mixture-of-Experts (MoE) Models** (e.g., Mixtral, Beyonder) for efficient processing.
 - **Optimized for Apple Silicon** with **Metal acceleration**.
 - **GPU Support:** Works with **NVIDIA CUDA**, **Apple Metal**, and **CPU-only setups**.
+- add "/--free_chat"
+- add "/--focus_transcript"
+- add "/--free_chat_only"
+- implement modification of system prompts during conversation
 ---
 
 ## 🛠️ Installation
