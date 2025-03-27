@@ -3,6 +3,7 @@
 A **small Python script** that utilizes **OpenAI Whisper** for speech-to-text transcription and an **open-source LLM** (like Llama 3.2 or Mistral) for summarizing audio files. Works offline, doesn´t require expensive hardware & prevents data leakages.
 Autoloading of all whisper model sizes & autoloading of LLMs from HuggingFace repo.  
 Adaptability: LLM tuneable by model, modelsize & quantization as well as by context window, temperature & repeatition penality to fit all resources and needs.
+Supports chat with and without context, in-conversation model switching, a well as skipping transcription by providing a text file.
 
 ## Features
 - **Transcription:** Runs Whisper **locally** without sending data to the cloud.
@@ -83,7 +84,6 @@ Whisper is an automatic speech recognition (ASR) system from OpenAI. Different m
 
 
 ---
-
 ## **🧠 Alternative LLM Models**
 | Model | Developer | Open-Source? | Type | Description |
 |-------|-----------|--------------|------|-------------|
@@ -99,7 +99,10 @@ Whisper is an automatic speech recognition (ASR) system from OpenAI. Different m
 | **laser-dolphin-mixtral-2x7B** | Unknown | ✅ Open | MoE | Hybrid Mixtral variant for efficiency |
 | **Dr_Samantha-7B** | Stability AI | ✅ Open | Instruction-Tuned | Optimized for conversational AI & medical text |
 | **Baichuan-2-13B** | Baichuan AI | ✅ Open | Standard | Chinese & multilingual NLP model |
-
+| **Deepseek-Coder-6.7B** | DeepSeek | ✅ Open | Code/Instruction | Code-specialized model with instruction tuning |
+| **Qwen2.5-14B** | Alibaba | ✅ Open | Multilingual | High-performance general LLM with strong multilingual support |
+| **Qwen2.5-7B** | Alibaba | ✅ Open | Multilingual | Mid-sized multilingual LLM, tuned for chat and reasoning |
+| **Qwen2.5-0.5B** | Alibaba | ✅ Open | Lightweight | Small LLM for resource-limited environments |
 
 ---
 
