@@ -14,6 +14,7 @@ Supports chat with and without context, in-conversation model switching, a well 
   - **Mixture-of-Experts (MoE) Models** (e.g., Mixtral, Beyonder) for efficient processing.
 - **Optimized for Apple Silicon** with **Metal acceleration**.
 - **GPU Support:** Works with **NVIDIA CUDA**, **Apple Metal**, and **CPU-only setups**.
+- **Free Chat** talk about anything, switch model during conversation, drop context and conversation history.
 ---
 
 ## 🛠️ Installation
@@ -54,6 +55,7 @@ python3 audio_summarizer.py my_audio.mp3
 | `--temperature` |Controls randomness (0.0-1.0) |  
 | `--repeat-penalty` |Controls how much to penalize repetition 1.0 - 1.4|
 | `--context-size` |Defines the context window size (see below)|
+| `--free-chat` |Start free conversation|
 
 ### **Detailed Model Descriptions**
 #### **Whisper Models**
@@ -161,14 +163,9 @@ This project is open-source under the **MIT License**.
 - 📌 Implement adaptive temperature & penalty settings based on input length
 - 📌 Enable GPU load balancing between multiple available GPUs
 - 📌 add use existing transcription file from transient/from provided file
-- 📌 add option to only create transcript
-    - add option to provide target path for transcript & and for summary
-- 📌 add option to start chat mode with context
 - 📌 add base prompt modification by providing string via flag
 - 📌 add permanent personalization options
-- 📌 add `/--free_chat`
 - 📌 add `/--focus_transcript`
-- 📌 add `/--free_chat_only`
 - 📌 implement modification of system prompts during conversation
 
 
